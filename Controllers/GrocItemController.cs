@@ -13,6 +13,12 @@ namespace GroceryStoreMgmt.Controllers
     [ApiController]
     public class GrocItemController : ControllerBase
     {
+        //readonly log4net.ILog _log4net;
+        //public GrocItemController()
+        //{
+        //    _log4net = log4net.LogManager.GetLogger(typeof(GrocItemController));
+        //}
+
 
         private readonly GrocContext _context;
         public GrocItemController(GrocContext context)

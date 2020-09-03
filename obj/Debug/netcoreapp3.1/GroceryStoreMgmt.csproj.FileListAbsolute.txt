@@ -66,3 +66,4 @@ D:\Dotnet_Projects\GroceryStoreMgmt\bin\Debug\netcoreapp3.1\Microsoft.Extensions
 D:\Dotnet_Projects\GroceryStoreMgmt\obj\Debug\netcoreapp3.1\GroceryStoreMgmt.csproj.CoreCompileInputs.cache
 D:\Dotnet_Projects\GroceryStoreMgmt\obj\Debug\netcoreapp3.1\GroceryStoreMgmt.MvcApplicationPartsAssemblyInfo.cs
 D:\Dotnet_Projects\GroceryStoreMgmt\obj\Debug\netcoreapp3.1\GroceryStoreMgmt.MvcApplicationPartsAssemblyInfo.cache
+D:\Dotnet_Projects\GroceryStoreMgmt\bin\Debug\netcoreapp3.1\log4net.config
