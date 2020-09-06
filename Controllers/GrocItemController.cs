@@ -13,7 +13,7 @@ namespace GroceryStoreMgmt.Controllers
     [ApiController]
     public class GrocItemController : ControllerBase
     {
-        //readonly log4net.ILog _log4net;
+        readonly log4net.ILog _log4net;
         //public GrocItemController()
         //{
         //    _log4net = log4net.LogManager.GetLogger(typeof(GrocItemController));
@@ -21,17 +21,25 @@ namespace GroceryStoreMgmt.Controllers
 
 
         private readonly GrocContext _context;
+        private grocitem grocdata;
+
         public GrocItemController(GrocContext context)
         {
             _context = context;
+            _log4net = log4net.LogManager.GetLogger(typeof(GrocItemController));
         }
+        //new constructor added 
+        //public GrocItemController(grocitem grocdata)
+        //{
+        //    this.grocdata = grocdata;
+        //}
 
-       
+
         // GET: api/<GrocItemController>
         [HttpGet]
-        public IEnumerable<grocitem> Get() //<grocitem> grocitems
+        public IActionResult  /*IEnumerable<grocitem> */ Get() //<grocitem> grocitems
         {
-            return _context.grocitems.ToList();
+            return Ok(_context.grocitems.ToList());
         }
 
         // GET api/<GrocItemController>/5
@@ -45,6 +53,7 @@ namespace GroceryStoreMgmt.Controllers
         [HttpPost]
         public string Post([FromBody] grocitem obj)
         {
+            _log4net.Info(" Http POST Request done");
             _context.grocitems.Add(obj);
             _context.SaveChanges();
             return "Congrats!Successfully added";
@@ -52,16 +61,27 @@ namespace GroceryStoreMgmt.Controllers
 
         // PUT api/<GrocItemController>/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody] grocitem value)
+        public IActionResult Put(int id, [FromBody] grocitem value)
         {
+            
             grocitem obj = _context.grocitems.Find(id);
-            obj.GrocName = value.GrocName;
-            obj.GrocPrice = value.GrocPrice;
-            obj.GrocQuantity = value.GrocQuantity;
-            obj.GrocTime = value.GrocTime;
-            _context.SaveChanges();
-            return "Congrats!Updated successfully";
+            if (obj == null)
+                return BadRequest();
+            else
+            {
+                obj.GrocName = value.GrocName;
+                obj.GrocPrice = value.GrocPrice;
+                obj.GrocQuantity = value.GrocQuantity;
+                obj.GrocTime = value.GrocTime;
+                _context.SaveChanges();
+                return Ok(obj);
+            }
         }
+
+        //public object AddDetail(grocitem grocvalue)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         // DELETE api/<GrocItemController>/5
         [HttpDelete("{id}")]

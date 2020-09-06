@@ -8,12 +8,16 @@ namespace GroceryStoreMgmt.Models
 {
     public class GrocContext : DbContext
     {
+        public GrocContext()
+        {
+
+        }
         public GrocContext(DbContextOptions options) : base(options)
         {
 
         }
 
-        public DbSet<grocsell> grocsells { get; set; }
-        public DbSet<grocitem> grocitems {get;set;}
+        public virtual DbSet<grocsell> grocsells { get; set; }
+        public virtual DbSet<grocitem> grocitems {get;set;}
     }
 }
