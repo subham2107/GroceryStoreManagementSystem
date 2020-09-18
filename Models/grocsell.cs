@@ -10,7 +10,7 @@ namespace GroceryStoreMgmt.Models
     {
         [Key]
         public int SellId { get; set; }
-        public int GrocId { get; set; } //foreign key referencing the grocitem table
+        public int GrocId { get; set; } 
         public string CustName { get; set; }
         public int GrocQuantity { get; set; }
         public DateTime GrocBuyTime { get; set; }

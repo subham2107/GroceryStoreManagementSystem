@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStoreMgmt", "Grocery
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestGrocStoreMgmtProject", "..\NUnitTestGrocStoreMgmtProject\NUnitTestGrocStoreMgmtProject.csproj", "{E6E15364-D20B-4EB5-B6B4-719B54693097}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrocStoreMgmtSystemMVC", "..\GrocStoreMgmtSystemMVC\GrocStoreMgmtSystemMVC.csproj", "{FA12876F-B78C-4888-87F0-F7C295361E3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E6E15364-D20B-4EB5-B6B4-719B54693097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E15364-D20B-4EB5-B6B4-719B54693097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6E15364-D20B-4EB5-B6B4-719B54693097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA12876F-B78C-4888-87F0-F7C295361E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA12876F-B78C-4888-87F0-F7C295361E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA12876F-B78C-4888-87F0-F7C295361E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA12876F-B78C-4888-87F0-F7C295361E3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

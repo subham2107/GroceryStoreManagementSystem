@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GroceryStoreMgmt.Models;
+using GroceryStoreMgmt.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,30 +15,27 @@ namespace GroceryStoreMgmt.Controllers
     public class GrocSellController : ControllerBase
     {
         readonly log4net.ILog _log4net;
-        //public GrocSellController()
-        //{
-        //    _log4net = log4net.LogManager.GetLogger(typeof(GrocSellController));
-        //}
-        private readonly GrocContext _context;
-        public GrocSellController(GrocContext context)
+        private readonly GrocSellRepo _context;
+        public GrocSellController(GrocSellRepo context)
         {
             _context = context;
             _log4net = log4net.LogManager.GetLogger(typeof(GrocSellController));
         }
         // GET: api/<GrocSellController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_context.Get());
         }
 
         // GET api/<GrocSellController>/5
         [HttpGet("{id}")]
-        public IEnumerable<grocsell> Get(int id)
+        public IActionResult Get(int id)
         {
-            IEnumerable<grocsell> grocsells = _context.grocsells.ToList();
-            grocsells = from x in grocsells where x.GrocId == id select x;
-            return grocsells;
+            IQueryable<grocsell> obj = _context.Get(id);
+            if (obj.Count() > 0)
+                return Ok(obj);
+            return BadRequest(obj);
         }
 
         // POST api/<GrocSellController>
@@ -45,20 +43,11 @@ namespace GroceryStoreMgmt.Controllers
      
         public string Post([FromBody] grocsell obj)
         {
-            _context.grocsells.Add(obj);
-            _context.SaveChanges();
-            return "Congrats!Successfully added";
+            
+            return _context.Post(obj);
         }
-        // PUT api/<GrocSellController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+       
 
-        // DELETE api/<GrocSellController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

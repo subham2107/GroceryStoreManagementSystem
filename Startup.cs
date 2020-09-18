@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GroceryStoreMgmt.Models;
+using GroceryStoreMgmt.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace GroceryStoreMgmt
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped <GrocItemRepo>();
+            services.AddScoped<GrocSellRepo>();
             services.AddControllers();
             services.AddDbContext<GrocContext>(options =>
             {
